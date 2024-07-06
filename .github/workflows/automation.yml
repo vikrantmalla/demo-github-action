@@ -41,7 +41,7 @@ jobs:
 
     steps:
       - name: Download artifact
-        use: actions/download-artifact@v3
+        uses: actions/download-artifact@v3
         with:
           name: static-site
 
