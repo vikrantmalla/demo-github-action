@@ -25,7 +25,7 @@ jobs:
       - name: Build static website
         run: npm run build
       - name: Upload built website
-        uses: action/upload-artifact@v2
+        uses: actions/upload-artifact@v2
         with:
           name: static-site
           path: out/
