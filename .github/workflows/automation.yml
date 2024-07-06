@@ -47,3 +47,9 @@ jobs:
 
       - name: Test artifact download
         run: ls -R
+
+      - name: Archive Release
+        uses: thedoctor0/zip-release@0.7.5
+        with:
+        type: 'zip'
+        filename: 'release.zip' 
