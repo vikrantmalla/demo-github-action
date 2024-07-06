@@ -1,7 +1,8 @@
 name: Build, Archive, and Release Next.js Application
 
 on:
-  push: [main]
+  push:
+    branches: [main]
 
 jobs:
   build-and-archive:
