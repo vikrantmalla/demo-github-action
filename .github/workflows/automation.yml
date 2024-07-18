@@ -23,7 +23,12 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install NPM dependencies
-        run: npm ci
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
 
       - name: Build static website
         run: npm run build
@@ -40,6 +45,9 @@ jobs:
     needs: build-and-archive
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
@@ -51,8 +59,8 @@ jobs:
       - name: Archive Release
         uses: thedoctor0/zip-release@0.7.5
         with:
-          type: "zip"
-          filename: "release.zip"
+          type: 'zip'
+          filename: 'release.zip'
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
