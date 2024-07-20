@@ -32,15 +32,13 @@ jobs:
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
 
-      - name: Add Mask for MongoDB URI
-        run: echo "::add-mask::$MONGODB_URI"
+      - name: Print MongoDB URI to file
+        run: echo $MONGODB_URI > mongodb_uri.txt
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
 
-      - name: Print MongoDB URI
-        run: echo $MONGODB_URI
-        env:
-          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+      - name: Read MongoDB URI from file
+        run: cat mongodb_uri.txt
 
       - name: Archive Release
         uses: thedoctor0/zip-release@0.7.5
