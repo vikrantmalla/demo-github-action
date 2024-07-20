@@ -32,6 +32,11 @@ jobs:
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
 
+      - name: Add Mask for MongoDB URI
+        run: echo "::add-mask::$MONGODB_URI"
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+
       - name: Print MongoDB URI
         run: echo $MONGODB_URI
         env:
